@@ -35,6 +35,7 @@ const App: React.FC = () => {
     1000000000// Lord
   ];
 
+  const [name, setName] = useState('');
   const [levelIndex, setLevelIndex] = useState(6);
   const [points, setPoints] = useState(22749365);
   const [clicks, setClicks] = useState<{ id: number, x: number, y: number }[]>([]);
@@ -130,6 +131,11 @@ const App: React.FC = () => {
     return () => clearInterval(interval);
   }, [profitPerHour]);
 
+  useEffect(() => {
+    const user = window?.Telegram?.WebApp?.initData?.user;
+    setName(user?.username || 'error');
+  }, []);
+
   return (
     <div className="bg-black flex justify-center">
       <div className="w-full bg-black text-white h-screen font-bold flex flex-col max-w-xl">
@@ -139,7 +145,7 @@ const App: React.FC = () => {
               <Hamster size={24} className="text-[#d4d4d4]" />
             </div>
             <div>
-              <p className="text-sm">Nikandr (CEO)</p>
+              <p className="text-sm">{ name }</p>
             </div>
           </div>
           <div className="flex items-center justify-between space-x-4 mt-1">
