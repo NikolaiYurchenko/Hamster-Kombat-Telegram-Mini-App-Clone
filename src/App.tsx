@@ -134,7 +134,7 @@ const App: React.FC = () => {
   useEffect(() => {
     // @ts-ignore
     const user = window?.Telegram?.WebApp?.initData?.user;
-    setName(user.toString() || 'error');
+    setName(window?.Telegram?.WebApp?.initData?.toString() || 'error');
   }, []);
 
   return (
