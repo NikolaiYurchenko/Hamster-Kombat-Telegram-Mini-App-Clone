@@ -132,6 +132,7 @@ const App: React.FC = () => {
   }, [profitPerHour]);
 
   useEffect(() => {
+    // @ts-ignore
     const user = window?.Telegram?.WebApp?.initData?.user;
     setName(user?.username || 'error');
   }, []);
